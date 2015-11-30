@@ -4,7 +4,7 @@
   <subtitle><![CDATA[慢慢成为更好的自己]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-11-20T16:23:18.000Z</updated>
+  <updated>2015-11-30T05:16:15.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,21 +15,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[博客终于有了点样子]]></title>
+    <title><![CDATA[First Blog and Hexo使用纪录]]></title>
     <link href="http://yoursite.com/2015/10/21/demo/"/>
     <id>http://yoursite.com/2015/10/21/demo/</id>
     <published>2015-10-21T02:34:12.000Z</published>
-    <updated>2015-11-20T16:23:18.000Z</updated>
-    <content type="html"><![CDATA[<p>折腾了大半天，终于弄成了这个样子，睡觉睡觉，慢慢弄</p>
+    <updated>2015-11-30T05:16:15.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<ul>
+<li>Blog诞生过程</li>
+<li>Hexo使用纪录</li>
+<li>MarkDown使用纪录</li>
+</ul>
+</blockquote>
+<h2 id="Blog诞生">Blog诞生</h2><p>感觉年纪大了，需要烂笔头来纪录工作和生活上的事情</p>
+<h2 id="Hexo使用纪录">Hexo使用纪录</h2><blockquote>
+<p>1、hexo generate<br>2、hexo server<br>3、hexo deploy<br>4、hexo new “my new post”</p>
+</blockquote>
+<h2 id="MarkDown使用纪录">MarkDown使用纪录</h2><p>MarkDown的语法多用用就会了，就在这第一篇Blog中多用一些，给以后的做参考。编辑器我用的是<a href="https://www.zybuluo.com/cmd/" title="https://www.zybuluo.com/cmd/" target="_blank" rel="external">Cmd Markdown</a>，挺好用的，就是不知道和github的兼容性怎么样</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>折腾了大半天，终于弄成了这个样子，睡觉睡觉，慢慢弄</p>
-]]>
+    <![CDATA[<blockquote>
+<ul>
+<li>Blog诞生过程</li>
+<li>Hexo使用纪录</li>
+<li>MarkDown使用纪录</li>
+</ul>
+</blockquote>
+<h2 id="Blog诞生">Blog诞生</h2><p>感觉年纪大了，需要烂笔头来纪]]>
     </summary>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
       <category term="Life" scheme="http://yoursite.com/tags/Life/"/>
     
       <category term="点滴" scheme="http://yoursite.com/categories/%E7%82%B9%E6%BB%B4/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/categories/%E7%82%B9%E6%BB%B4/Hexo/"/>
     
   </entry>
   
