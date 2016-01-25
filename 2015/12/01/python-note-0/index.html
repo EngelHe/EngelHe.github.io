@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Engel&#39;s Blog</title>
+  <title>python笔记0：@staticmethod @classmethod instancemethod的前世今生 | Engel&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录成习惯">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Engel's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="前言最近有时间想把Python3的基础知识好好整理一下，就有了这一系列的笔记。
+类属性和实例属性 在开始整理这两个Decorator之前，先来理一理类和实例之间的关系，那就从属性开始吧，其实属性和方法，大家可以把他们看作是一样的，在python中，一切都是对象，在逻辑上，属性和方法，是一样的。12345678910111213141516171819202122232425class Pcl(ob">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python笔记0：@staticmethod @classmethod instancemethod的前世今生">
+<meta property="og:url" content="http://yoursite.com/2015/12/01/python-note-0/index.html">
 <meta property="og:site_name" content="Engel's Blog">
-<meta property="og:description" content="记录成习惯">
+<meta property="og:description" content="前言最近有时间想把Python3的基础知识好好整理一下，就有了这一系列的笔记。
+类属性和实例属性 在开始整理这两个Decorator之前，先来理一理类和实例之间的关系，那就从属性开始吧，其实属性和方法，大家可以把他们看作是一样的，在python中，一切都是对象，在逻辑上，属性和方法，是一样的。12345678910111213141516171819202122232425class Pcl(ob">
+<meta property="og:updated_time" content="2016-01-25T07:15:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Engel's Blog">
-<meta name="twitter:description" content="记录成习惯">
+<meta name="twitter:title" content="python笔记0：@staticmethod @classmethod instancemethod的前世今生">
+<meta name="twitter:description" content="前言最近有时间想把Python3的基础知识好好整理一下，就有了这一系列的笔记。
+类属性和实例属性 在开始整理这两个Decorator之前，先来理一理类和实例之间的关系，那就从属性开始吧，其实属性和方法，大家可以把他们看作是一样的，在python中，一切都是对象，在逻辑上，属性和方法，是一样的。12345678910111213141516171819202122232425class Pcl(ob">
   
     <link rel="alternative" href="/atom.xml" title="Engel&#39;s Blog" type="application/atom+xml">
   
@@ -198,9 +202,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-python-note-0" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-python-note-0" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/12/01/python-note-0/" class="article-date">
@@ -216,12 +218,27 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/01/python-note-0/">python笔记0：@staticmethod @classmethod instancemethod的前世今生</a>
+    <h1 class="article-title" itemprop="name">
+      python笔记0：@staticmethod @classmethod instancemethod的前世今生
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -274,34 +291,127 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-	</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+
+
+
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2015/11/30/demo/">
+        First Blog and Hexo使用纪录
+      </a>
+    </div>
+  
+</nav>
+
   
 </article>
 
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类属性和实例属性"><span class="toc-number">2.</span> <span class="toc-text">类属性和实例属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Instance_Method"><span class="toc-number">3.</span> <span class="toc-text">Instance Method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#@classmethod"><span class="toc-number">4.</span> <span class="toc-text">@classmethod</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#@staticmethod"><span class="toc-number">5.</span> <span class="toc-text">@staticmethod</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/12/01/python-note-0/" data-title="python笔记0：@staticmethod @classmethod instancemethod的前世今生" data-url="http://yoursite.com/2015/12/01/python-note-0/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"engel"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
 
 
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#ds-thread" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
 
+
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2015/11/30/demo/" title="下一篇: First Blog and Hexo使用纪录">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
 
 
 
@@ -312,8 +422,8 @@
         fancybox: true,
         mathjax: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -321,114 +431,6 @@
         }
         </script>
         
-
-  
-    <article id="post-demo" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/30/demo/" class="article-date">
-  	<time datetime="2015-11-30T09:30:00.000Z" itemprop="datePublished">2015-11-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/30/demo/">First Blog and Hexo使用纪录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Blog诞生过程">Blog诞生过程</h2><p>感觉年纪大了，需要烂笔头来纪录工作和生活上的事情。<br>于是乎就想到了以Github为载体来搭建一个Blog，Blog Framework的选择有JekyII和<a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>，最后选择了的原因很简单，Hexo来搭建更加简单，懒得动脑子就迅速搞了起来。步骤纪录如下：</p>
-<blockquote>
-<ol>
-<li>npm install hexo-cli -g</li>
-<li>hexo init blog</li>
-<li>npm install (安装依赖)</li>
-<li>npm install hexo-cli -g</li>
-<li>hexo server</li>
-</ol>
-</blockquote>
-<p>这时候本地已经可以访问了，也就是说一个Blog已经诞生了。如何配置Github就不赘述了，Google一下一大堆。Hexo的<a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">配置文档</a>在这里，配置好了，每次hexo deploy一下就上传代码了，非常方便。<br>接下来也就是选择一个自己喜欢的Theme来美化一下就好啦，如果有兴趣还可以自己开发一个Theme。</p>
-<h2 id="Hexo使用纪录">Hexo使用纪录</h2><p>不用多说，平常使用只要下面四个命令就好了。除此之外的配置和使用有空再研究吧</p>
-<blockquote>
-<ol>
-<li>hexo generate</li>
-<li>hexo server</li>
-<li>hexo deploy</li>
-<li>hexo new “my new post”</li>
-</ol>
-</blockquote>
-<h2 id="MarkDown使用纪录">MarkDown使用纪录</h2><p>MarkDown的语法多用用就会了，就在这第一篇Blog中多用一些，给以后的做参考。编辑器我用的是<a href="https://www.zybuluo.com/cmd/" title="https://www.zybuluo.com/cmd/" target="_blank" rel="external">Cmd Markdown</a>，挺好用的，就是不知道和github的兼容性怎么样</p>
-<h2 id="参考文档">参考文档</h2><ul>
-<li><a href="http://zipperary.com/categories/hexo/" target="_blank" rel="external">http://zipperary.com/categories/hexo/</a></li>
-<li><a href="http://engel.duoshuo.com/admin/" target="_blank" rel="external">多说</a>，评论模块用的豆瓣登陆</li>
-</ul>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/点滴/">点滴</a>
-	</div>
-
-
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Life/">Life</a></li></ul>
-	</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-    
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-        <script>
-        var yiliaConfig = {
-        fancybox: true,
-        mathjax: true,
-        animate: true,
-        isHome: true,
-        isPost: false,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        open_in_new: false
-        }
-        </script>
-        
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -456,20 +458,6 @@
 </footer>
     </div>
     
-	<script>
-		var yiliaConfig = {
-			fancybox: false,
-			mathjax: true,
-			animate: true,
-			isHome: true,
-			isPost: false,
-			isArchive: false,
-			isTag: false,
-			isCategory: false,
-			open_in_new: false
-		}
-	</script>
-
 
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>

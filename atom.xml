@@ -4,7 +4,7 @@
   <subtitle><![CDATA[慢慢成为更好的自己]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-12-01T09:36:42.000Z</updated>
+  <updated>2016-01-25T07:15:38.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[python笔记0：@staticmethod @classmethod instancemethod的前世今生]]></title>
+    <link href="http://yoursite.com/2015/12/01/python-note-0/"/>
+    <id>http://yoursite.com/2015/12/01/python-note-0/</id>
+    <published>2015-12-01T09:46:28.000Z</published>
+    <updated>2016-01-25T07:15:38.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="前言">前言</h3><p>最近有时间想把Python3的基础知识好好整理一下，就有了这一系列的笔记。</p>
+<h3 id="类属性和实例属性">类属性和实例属性</h3><p> 在开始整理这两个Decorator之前，先来理一理类和实例之间的关系，那就从属性开始吧，其实属性和方法，大家可以把他们看作是一样的，在python中，一切都是对象，在逻辑上，属性和方法，是一样的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pcl</span><span class="params">(object)</span>:</span></span><br><span class="line">    class_data = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        </span><br><span class="line">p1 = Pcl(<span class="number">10</span>)</span><br><span class="line">p2 = Pcl(<span class="number">20</span>)</span><br><span class="line">print(<span class="string">'--------------------------------'</span>)</span><br><span class="line">print(<span class="string">'p1.data:'</span>, p1.data)</span><br><span class="line">print(<span class="string">'p2.data:'</span>, p2.data)</span><br><span class="line"><span class="comment"># print('Pcl.data: ', Pcl.data)</span></span><br><span class="line">print(<span class="string">'p1.class_data:'</span>, p1.class_data)</span><br><span class="line">print(<span class="string">'p2.class_data:'</span>, p2.class_data)</span><br><span class="line">print(<span class="string">'Pcl.class_data:'</span>, Pcl.class_data)</span><br><span class="line">p1.class_data = <span class="number">100</span></span><br><span class="line">print(<span class="string">'--------------------------------'</span>)</span><br><span class="line">print(<span class="string">'p1.class_data:'</span>, p1.class_data)</span><br><span class="line">print(<span class="string">'p2.class_data:'</span>, p2.class_data)</span><br><span class="line">print(<span class="string">'Pcl.class_data:'</span>, Pcl.class_data)</span><br><span class="line">Pcl.class_data = <span class="number">50</span></span><br><span class="line">print(<span class="string">'--------------------------------'</span>)</span><br><span class="line">print(<span class="string">'p1.class_data:'</span>, p1.class_data)</span><br><span class="line">print(<span class="string">'p2.class_data:'</span>, p2.class_data)</span><br><span class="line">print(<span class="string">'Pcl.class_data:'</span>, Pcl.class_data)</span><br></pre></td></tr></table></figure></p>
+<p>打印的结果会是</p>
+<pre><code><span class="prompt">&gt;&gt;</span>&gt;--------------------------------
+&gt;&gt;&gt;p1.<span class="symbol">data:</span> <span class="number">10</span>
+<span class="prompt">&gt;&gt;</span>&gt;p2.<span class="symbol">data:</span> <span class="number">20</span>
+<span class="prompt">&gt;&gt;</span>&gt;p1.<span class="symbol">class_data:</span> <span class="number">2</span>
+<span class="prompt">&gt;&gt;</span>&gt;p2.<span class="symbol">class_data:</span> <span class="number">2</span>
+<span class="prompt">&gt;&gt;</span>&gt;<span class="constant">Pcl</span>.<span class="symbol">class_data:</span> <span class="number">2</span>
+<span class="prompt">&gt;&gt;</span>&gt;--------------------------------
+&gt;&gt;&gt;p1.<span class="symbol">class_data:</span> <span class="number">100</span>
+<span class="prompt">&gt;&gt;</span>&gt;p2.<span class="symbol">class_data:</span> <span class="number">2</span>
+<span class="prompt">&gt;&gt;</span>&gt;<span class="constant">Pcl</span>.<span class="symbol">class_data:</span> <span class="number">2</span>
+<span class="prompt">&gt;&gt;</span>&gt;--------------------------------
+&gt;&gt;&gt;p1.<span class="symbol">class_data:</span> <span class="number">100</span>
+<span class="prompt">&gt;&gt;</span>&gt;p2.<span class="symbol">class_data:</span> <span class="number">50</span>
+<span class="prompt">&gt;&gt;</span>&gt;<span class="constant">Pcl</span>.<span class="symbol">class_data:</span> <span class="number">50</span>
+</code></pre><ul>
+<li>创建了两个对象，他们的data属性是互不相干的，这个很好理解</li>
+<li>类属性class_data对象之间共享同一个</li>
+<li>当修改类属性的时候，发生了一些神奇的事情<ul>
+<li><code>p1.class_data = 100</code> 这一步其实并没有修改那个类属性class_data，而是给p1这个对象创建了一个新的属性，恰好命名也是class_data，所以打印结果就如上所示了</li>
+<li>而当我们执行<code>Pcl.class_data = 50</code> 这一句的时候，才真正修改了那个类属性，所以接下来的打印结果，p1因为有了和类属性相同命名的一个属性，所以还是100，p2和Pcl调用的结果，都变成了50</li>
+</ul>
+</li>
+</ul>
+<h3 id="Instance_Method">Instance Method</h3><p>大多数时候，类中的方法都是这种实例方法，随意举个栗子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pcl</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(self.data)</span><br><span class="line"></span><br><span class="line">Pcl(<span class="number">10</span>).foo()</span><br></pre></td></tr></table></figure></p>
+<p>打印的结果是</p>
+<pre><code><span class="prompt">&gt;&gt;</span>&gt;<span class="number">10</span>
+</code></pre><p>简单解释一下，Instance Method的参数第一个必须是self，代表自身对象的引用，实例的任何属性和任何方法，都通过self来调用。</p>
+<h3 id="@classmethod">@classmethod</h3><p>基于Instance Method，当一个方法中，没有通过self来做任何调用，但是调用了类属性（方法），Python建议把这个方法前加上@classmethod，再来举个栗子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pcl</span><span class="params">(object)</span>:</span></span><br><span class="line">    class_data = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        Pcl.class_data += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="decorator">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(cls)</span>:</span></span><br><span class="line">        print(cls.class_data)</span><br><span class="line"></span><br><span class="line">a = Pcl()</span><br><span class="line">b = Pcl()</span><br><span class="line">a.bar()</span><br><span class="line">Pcl.bar()</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，构造了两个对象，<code>class_data</code> 的值向上叠加了2，所以打印结果是：</p>
+<pre><code><span class="prompt">&gt;&gt;</span>&gt;<span class="number">2</span>
+<span class="prompt">&gt;&gt;</span>&gt;<span class="number">2</span>
+</code></pre><p>对象和类都可以直接调用bar方法，这点和InstanceMethod不同。classmethod的第一个参数，也是Python规定的，必须是cls，代表类本身，<code>cls.class_data</code>相当于<code>Pcl.class_data</code><br>为什么说这种情况加上@classmethod是Python建议呢，Python的灵活之处就在这里，不加@classmethod，对程序运行毫无影响，至于调用类属性（方法）有其它办法，如下再来个栗子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pcl</span><span class="params">(object)</span>:</span></span><br><span class="line">    class_data = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        Pcl.class_data += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(self.__class__.class_data)</span><br><span class="line">        print(Pcl.class_data)</span><br><span class="line"></span><br><span class="line">a = Pcl()</span><br><span class="line">b = Pcl()</span><br><span class="line">a.bar()</span><br></pre></td></tr></table></figure></p>
+<p>运行结果如下</p>
+<pre><code><span class="prompt">&gt;&gt;</span>&gt;<span class="number">2</span>
+<span class="prompt">&gt;&gt;</span>&gt;<span class="number">2</span>
+</code></pre><p>看到这里相信大家都明白是怎么回事了。</p>
+<h3 id="@staticmethod">@staticmethod</h3><p>至于@staticmethod，一般情况下，如果该方法中，没有引用到这个类的任何其它方法和属性，保持相对独立，Python就建议将该方法设为staticmethod。栗子来了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">switch = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pcl</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="decorator">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">check_switch</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> switch</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.check_switch():</span><br><span class="line">            print(<span class="string">'switch is True'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'switch is False'</span>)</span><br><span class="line"></span><br><span class="line">Pcl().foo()</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，staticmethod没有任何必须要加上的参数，打印结果自然如下：</p>
+<pre><code>&gt;&gt;&gt;<span class="keyword">switch</span> <span class="keyword">is</span> True
+</code></pre><h3 id="总结">总结</h3><p>在我理解，@staticmethod和@classmethod的出现，完全是为了代码的可维护性的，没有他们不会使代码不可运行，但是可以使得代码结构更加科学。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="前言">前言</h3><p>最近有时间想把Python3的基础知识好好整理一下，就有了这一系列的笔记。</p>
+<h3 id="类属性和实例属性">类属性和实例属性</h3><p> 在开始整理这两个Decorator之前，先来理一理类和实例之间的关系，那就从属性开]]>
+    </summary>
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[First Blog and Hexo使用纪录]]></title>
